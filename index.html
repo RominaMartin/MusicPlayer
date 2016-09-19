@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Music Player</title>
+        <meta charset="UTF-8">
+        
+        <!-- Styles -->
+        <link rel="stylesheet" href="css/reset.css">
+        <link rel="stylesheet" href="css/global.css">
+        <!-- Scripts -->
+        <script src="js/album.js"></script>
+        <script src="js/constants.js"></script>
+        <script src="js/index.js"></script> 
+    </head>
+    <body>
+
+        <button id="nextSong">Next</button>
+        <button id="prevSong">Previous</button>
+        
+        <ul id="album"></ul>
+
+        <template>
+            <ul class="song-item">
+                <li class="song-name"></li>
+                <li class="song-artist"></li>
+                <li class="song-duration"></li>
+                <li class="song-playing"></li>
+            </ul>
+        </template>
+    </body>
+</html>
