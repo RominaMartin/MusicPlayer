@@ -47,6 +47,7 @@ window.addEventListener("load", function() {
         songList[currentSong].classList.remove("currentSong");
         currentSong = current;
         songList[current].classList.add("currentSong");
+        timer.startNewSong();
     };
 
     /**
@@ -62,6 +63,7 @@ window.addEventListener("load", function() {
         }
         return ++current;
     };
+    
     /**
      * Devuelve la canción anterior a la actual.
      * En caso que la actual sea la primera de la lista, va a la última
@@ -77,20 +79,33 @@ window.addEventListener("load", function() {
     };
 
     /**
-     * Se establece la cuenta para el timer.
-     * @returns {undefined}
+     * Timer para las canciones. En caso de acabar el tiempo de la canción avanza a la siguiente
+     * En caso de cambiar de canción se resetea y comienza la cuenta.
+     * Se puede pausar la canción.
+     * @type type
      */
-    var songTimer = function () {
-        if(!running) {
-            running = true;
-            interval = setInterval(function () {
-                totalTime++;
-                document.getElementById("sec").textContent = (totalTime);
-            }, 1000);
-        } else {
-            clearInterval(interval);
-            running = false;
-        }
+    var timer = {
+      start: function () {
+          interval = setInterval(function () {
+              totalTime++;
+              document.getElementById("sec").textContent = (totalTime);
+              if(totalTime === album.songList[currentSong].duration){
+                totalTime = 0;
+                clearInterval(interval);
+                setCurrentSong(getNextSongToPlay());
+              }
+          }, 1000);
+      },
+
+      pause: function () {
+          clearInterval(interval);
+      },
+
+      startNewSong: function () {
+          totalTime = 0;
+          clearInterval(interval);
+          this.start();
+      }
     };
 
     /**
@@ -105,6 +120,12 @@ window.addEventListener("load", function() {
     });
     
     document.getElementById("pauseAndResume").addEventListener("click", function () {
-        songTimer();
+        if(!running) {
+            running = true;
+            timer.start();
+        } else {
+            running = false;
+            timer.pause();
+        }
     });
 });

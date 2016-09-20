@@ -10,7 +10,7 @@ Diseño de un reproductor de música que desplegará la carátula de un álbum j
 - CSS3
 
 - JavaScript
-	
+    - [SetInterval](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)
 - Otros
 
 ## Screenshots
