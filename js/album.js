@@ -3,8 +3,8 @@ var album = {
 	"artist": "Enrique Bunbury",
 	"cover": "cover.jpg",
 	"songList": [
-		{ "name": "Ahora", "interpreter": "Bunbury", "duration": 340 },
-		{ "name": "Dos Clavos A Mis Alas", "interpreter": "Bunbury", "duration": 263 },
+		{ "name": "Ahora", "interpreter": "Bunbury", "duration": 10 },
+		{ "name": "Dos Clavos A Mis Alas", "interpreter": "Bunbury", "duration": 2 },
 		{ "name": "La Sirena Varada", "interpreter": "Bunbury / Valdivia / Andreu / Cardiel", "duration": 277 },
 		{ "name": "Los Inmortales", "interpreter": "Bunbury", "duration": 277 },
 		{ "name": "El Boxeador", "interpreter": "Bunbury / Draco Rosa", "duration": 317 },

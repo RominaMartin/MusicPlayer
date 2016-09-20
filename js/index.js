@@ -2,6 +2,12 @@
 window.addEventListener("load", function() {
     // Si no se selecciona ninguna, la primera estará por defecto
     var currentSong = 0;
+    // Tiempo en pausa por defecto
+    var running = false;
+    // Tiempo total transcurrido
+    var totalTime = 0;
+    // Intervalo para el tiempo a desplegar
+    var interval;
 
     /*
      * Recorre el JSON con los datos y rellena el template de canciones con
@@ -20,30 +26,28 @@ window.addEventListener("load", function() {
             
             var songList = document.getElementsByClassName("song-item");
             (function(newCurrent) { songList[newCurrent].addEventListener("click", function() {
-                    setCurrentSong(currentSong, newCurrent);
+                    setCurrentSong(newCurrent);
                     console.log("cancion actual: " + currentSong);
                 });
             })(i);
         }
     };
-    
+
     displaySongList();
     
-    
-    var setCurrentSong = function(previous, current) {
+    /**
+     * Establece la canción actual asignándole una clase para su estilo
+     * A su vez quita la clase a la que estuviese activa previamente.
+     * @param {Number} previous
+     * @param {Number} current
+     * @returns {undefined}
+     */
+    var setCurrentSong = function(current) {
         var songList = document.getElementsByClassName("song-item");
-        songList[previous].classList.remove("currentSong");
+        songList[currentSong].classList.remove("currentSong");
         currentSong = current;
         songList[current].classList.add("currentSong");
     };
-
-    document.getElementById("nextSong").addEventListener("click", function () {
-        setCurrentSong(currentSong, getNextSongToPlay());
-    });
-    
-    document.getElementById("prevSong").addEventListener("click", function () {
-        setCurrentSong(currentSong, getPrevSongToPlay());
-    });
 
     /**
      * Devuelve la siguiente canción a reproducir
@@ -52,20 +56,55 @@ window.addEventListener("load", function() {
      * @returns {Number}
      */
     var getNextSongToPlay = function () {
-        if(currentSong === album.songList.length) {
+        var current = currentSong;
+        if(current === (album.songList.length - 1)) {
             return 0;
         }
-        return ++currentSong;
+        return ++current;
     };
-    
+    /**
+     * Devuelve la canción anterior a la actual.
+     * En caso que la actual sea la primera de la lista, va a la última
+     * En otro caso reproduce la anterior.
+     * @returns {Number}
+     */
     var getPrevSongToPlay = function () {
         var current = currentSong;
         if(current === 0) {
-            alert("¡Está en la primera canción!");
-            return 0;
+            return (album.songList.length - 1);
         }
         return --current;
     };
 
-});
+    /**
+     * Se establece la cuenta para el timer.
+     * @returns {undefined}
+     */
+    var songTimer = function () {
+        if(!running) {
+            running = true;
+            interval = setInterval(function () {
+                totalTime++;
+                document.getElementById("sec").textContent = (totalTime);
+            }, 1000);
+        } else {
+            clearInterval(interval);
+            running = false;
+        }
+    };
 
+    /**
+     * Eventos
+     */
+    document.getElementById("nextSong").addEventListener("click", function () {
+        setCurrentSong(getNextSongToPlay());
+    });
+    
+    document.getElementById("prevSong").addEventListener("click", function () {
+        setCurrentSong(getPrevSongToPlay());
+    });
+    
+    document.getElementById("pauseAndResume").addEventListener("click", function () {
+        songTimer();
+    });
+});

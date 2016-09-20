@@ -5,6 +5,7 @@ Diseño de un reproductor de música que desplegará la carátula de un álbum j
 ## Elementos que se usan
 
 - HTML5
+    - [Template](https://developer.mozilla.org/es/docs/Web/HTML/Element/template)
 
 - CSS3
 
