@@ -42,14 +42,24 @@ window.addEventListener("load", function() {
      * @param {Number} current
      * @returns {undefined}
      */
+    /**
+     * Establece la canción actual 
+     * Hace la llamada al timer para el cambio de canción
+     * @param {type} current
+     * @returns {undefined}
+     */
     var setCurrentSong = function(current) {
-        var songList = document.getElementsByClassName("song-item");
-        songList[currentSong].classList.remove("currentSong");
+        setCurrentSongStyle(current);
         currentSong = current;
-        songList[current].classList.add("currentSong");
         timer.startNewSong();
     };
-
+    
+    var setCurrentSongStyle = function (current) {
+        var songList = document.getElementsByClassName("song-item");
+        songList[currentSong].classList.remove("currentSong");
+        songList[current].classList.add("currentSong");
+    };
+    
     /**
      * Devuelve la siguiente canción a reproducir
      * En caso de que la actual sea la última de la lista vuelve a la primera
@@ -88,7 +98,7 @@ window.addEventListener("load", function() {
       start: function () {
           interval = setInterval(function () {
               totalTime++;
-              document.getElementById("sec").textContent = (totalTime);
+              document.getElementById("sec").textContent = (minutesFormat(totalTime));
               if(totalTime === album.songList[currentSong].duration){
                 totalTime = 0;
                 clearInterval(interval);
@@ -103,10 +113,30 @@ window.addEventListener("load", function() {
 
       startNewSong: function () {
           totalTime = 0;
+          running = true;
           clearInterval(interval);
           this.start();
       }
     };
+    /**
+     * Calcula los minutos y los devuelve en formato correcto
+     * @param {type} seconds
+     * @returns {String}
+     */
+    var minutesFormat = function (seconds) {
+        var minutes = Math.floor(seconds / 60);
+        var leftSeconds = seconds - (minutes * 60);
+        console.log("Totales: " + seconds + "\nminutes: " + minutes + "\nleftSeconds: " + leftSeconds);
+
+        if(minutes < 10) {
+            minutes = "0" + minutes;
+        }
+        if(leftSeconds < 10) {
+            leftSeconds = "0" + leftSeconds;
+        }
+        return (minutes + ":" + leftSeconds);
+    };
+    
 
     /**
      * Eventos
@@ -121,9 +151,14 @@ window.addEventListener("load", function() {
     
     document.getElementById("pauseAndResume").addEventListener("click", function () {
         if(!running) {
+            console.log("!running");
+            if(currentSong === 0) {
+                setCurrentSongStyle(currentSong);
+            }
             running = true;
             timer.start();
         } else {
+            console.log("running");
             running = false;
             timer.pause();
         }
