@@ -10,6 +10,8 @@ Diseño de un reproductor de música que desplegará la carátula de un álbum j
 - CSS3
     - [Transform](https://developer.mozilla.org/es/docs/Web/CSS/transform)
     - [Animations](https://developer.mozilla.org/en-US/docs/Web/CSS/animation)
+    - [Text-Shadow](https://developer.mozilla.org/es/docs/Web/CSS/text-shadow)
+    - [FontAwesome](http://fontawesome.io/)
 
 - JavaScript
     - [SetInterval](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)

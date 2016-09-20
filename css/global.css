@@ -1,14 +1,89 @@
-ul {
-    margin: 2px;
-    background: #ccc;
-    width: 300px;
-    height: 100px;
+body {
+    font-family: 'Lato', sans-serif;
 }
+/**
+* Song List
+*/
 
 .currentSong {
-    background: brown;
+    background: #E3001C;
+    opacity: 0.6;
+}
+#info {
+    margin-top: -1px;
+    background: linear-gradient(to bottom, #FFF, #abbaab);
+}
+.song-item {
+    border: 1px solid #FFFFFF;
 }
 
+.song-name {
+    
+}
+
+/**
+* SVG Container
+*/
+#top {
+    text-align: center;
+    padding-top: 25px;
+    width: 100%;
+    background: linear-gradient(to bottom, #abbaab  , #FFF);
+}
+#media {
+    width: 100%;
+    display: inline-flex;
+    padding-bottom: 25px;
+}
+
+#albumName {
+    font-size: x-large;
+    color: #E3001C;
+    text-shadow: 0px 2px 0px rgba(255, 255, 255, 0.5)
+}
+
+#prevSong {
+    margin-left: 5%;
+}
+
+#nextSong {
+    margin-right: 5%;
+}
+
+#nextSong:before {
+    font-family: FontAwesome;
+    color: #525253;
+    content: "\F04E";
+    font-size: x-large;
+}
+#prevSong:before { 
+    font-family: FontAwesome;
+    color: #525253;
+    content: "\F04A";
+    font-size: x-large;
+}
+#nextSong:active:before, #prevSong:active:before{
+    color: #E3001C;
+}
+#current-info {
+    width: 100%;
+    text-align: center;
+}
+#current-song {
+    width: 100%;
+    font-size: x-large;
+}
+
+#current-duration {
+    width: 30%;
+    margin-left: 15%;
+    padding-top: 5px;
+}
+#total-duration {
+    width: 60%;
+    margin-left: -30%;
+    padding-top: 5px;
+}
 /**
 * SVG Styles
 */

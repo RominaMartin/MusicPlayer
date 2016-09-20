@@ -16,32 +16,6 @@ window.addEventListener("load", function() {
     // Inicialmente no habrá música así que se quita el brazo del disco
     armElement.classList.add('moveArmDown');
 
-    /*
-     * Recorre el JSON con los datos y rellena el template de canciones con
-     * tantas como encuentre en el JSON.
-     * 
-     */
-    var displaySongList = function () {
-        var t = document.querySelector('template').content;
-        var song = t.querySelectorAll("li");
-        for (var i = 0; i < album.songList.length; i++) {
-            song[CONSTANTS.SONG_NAME].textContent = album.songList[i].name;
-            song[CONSTANTS.SONG_ARTIST].textContent = album.songList[i].interpreter;
-            song[CONSTANTS.SONG_DURATION].textContent = album.songList[i].duration;
-
-            document.querySelector('#album').appendChild( document.importNode(t, true));
-            
-            var songList = document.getElementsByClassName("song-item");
-            (function(newCurrent) { songList[newCurrent].addEventListener("click", function() {
-                    setCurrentSong(newCurrent);
-                    console.log("cancion actual: " + currentSong);
-                });
-            })(i);
-        }
-    };
-
-    displaySongList();
-
     /**
      * Establece la canción actual 
      * Hace la llamada al timer para el cambio de canción
@@ -49,18 +23,27 @@ window.addEventListener("load", function() {
      * @returns {undefined}
      */
     var setCurrentSong = function(current) {
-        setCurrentSongStyle(current);
+        removePreviousStyle();
         currentSong = current;
+        setCurrentSongStyle(currentSong);
         timer.startNewSong();
     };
-    
-    var setCurrentSongStyle = function (current) {
+
+    var removePreviousStyle = function () {
         var songList = document.getElementsByClassName("song-item");
         songList[currentSong].classList.remove("currentSong");
-        songList[current].classList.add("currentSong");
+    };
+
+    var setCurrentSongStyle = function () {
+        var songList = document.getElementsByClassName("song-item");
+        songList[currentSong].classList.add("currentSong");
         armElement.classList.remove('moveArmDown');
         armElement.classList.add('moveArmUp');
         discElement.classList.add('discRolling');
+
+        document.getElementById("total-duration").textContent = (" / " + minutesFormat(album.songList[currentSong].duration));
+        document.getElementById("current-song").textContent = album.songList[currentSong].name;
+        document.getElementById("current-artist").textContent = album.songList[currentSong].interpreter;
     };
     /**
      * Cuando se pausa:
@@ -112,7 +95,7 @@ window.addEventListener("load", function() {
       start: function () {
           interval = setInterval(function () {
               totalTime++;
-              document.getElementById("sec").textContent = (minutesFormat(totalTime));
+              document.getElementById("current-duration").textContent = (minutesFormat(totalTime));
               if(totalTime === album.songList[currentSong].duration){
                 totalTime = 0;
                 clearInterval(interval);
@@ -150,6 +133,34 @@ window.addEventListener("load", function() {
         return (minutes + ":" + leftSeconds);
     };
 
+    /*
+     * Recorre el JSON con los datos y rellena el template de canciones con
+     * tantas como encuentre en el JSON.
+     * 
+     */
+    var displaySongList = function () {
+        var t = document.querySelector('template').content;
+        var song = t.querySelectorAll("li");
+        for (var i = 0; i < album.songList.length; i++) {
+            song[CONSTANTS.SONG_NAME].textContent = album.songList[i].name;
+            song[CONSTANTS.SONG_ARTIST].textContent = album.songList[i].interpreter;
+            song[CONSTANTS.SONG_DURATION].textContent = minutesFormat(album.songList[i].duration);
+
+            document.querySelector('#albumList').appendChild( document.importNode(t, true));
+            
+            var songList = document.getElementsByClassName("song-item");
+            (function(newCurrent) { songList[newCurrent].addEventListener("click", function() {
+                    setCurrentSong(newCurrent);
+                    console.log("Canción actual: " + currentSong);
+                });
+            })(i);
+        }
+        document.getElementById("albumName").textContent = album.name;
+    };
+
+    displaySongList();
+
+
     /**
      * Eventos
      */
@@ -162,15 +173,14 @@ window.addEventListener("load", function() {
     });
 
     armElement.addEventListener("click", function () {
+        console.log("Running: " + running + "\nCurrentSong: " + currentSong);
         if(!running) {
-            if(currentSong === 0) {
-                setCurrentSongStyle(currentSong);
-            }
+            setCurrentSongStyle(currentSong);
             running = true;
             timer.start();
         } else {
-            setPausedStyle();
             running = false;
+            setPausedStyle();
             timer.pause();
         }
     });
