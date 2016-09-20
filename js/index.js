@@ -8,6 +8,13 @@ window.addEventListener("load", function() {
     var totalTime = 0;
     // Intervalo para el tiempo a desplegar
     var interval;
+    // Elemento "arm", se usará cada vez que se pause/reanude
+    var armElement = document.getElementById('arm');
+    // Elemento "disc", se usará cada vez que se pause/reanude
+    var discElement = document.getElementById('disc');
+    
+    // Inicialmente no habrá música así que se quita el brazo del disco
+    armElement.classList.add('moveArmDown');
 
     /*
      * Recorre el JSON con los datos y rellena el template de canciones con
@@ -34,14 +41,7 @@ window.addEventListener("load", function() {
     };
 
     displaySongList();
-    
-    /**
-     * Establece la canción actual asignándole una clase para su estilo
-     * A su vez quita la clase a la que estuviese activa previamente.
-     * @param {Number} previous
-     * @param {Number} current
-     * @returns {undefined}
-     */
+
     /**
      * Establece la canción actual 
      * Hace la llamada al timer para el cambio de canción
@@ -58,6 +58,20 @@ window.addEventListener("load", function() {
         var songList = document.getElementsByClassName("song-item");
         songList[currentSong].classList.remove("currentSong");
         songList[current].classList.add("currentSong");
+        armElement.classList.remove('moveArmDown');
+        armElement.classList.add('moveArmUp');
+        discElement.add('discRolling');
+    };
+    /**
+     * Cuando se pausa:
+     * - El disco deja de girar
+     * - El brazo baja
+     * @returns {undefined}
+     */
+    var pauseStyle = function () {
+        armElement.classList.add('moveArmDown');
+        armElement.classList.remove('moveArmUp');
+        discElement.remove('discRolling');      
     };
     
     /**
@@ -108,6 +122,7 @@ window.addEventListener("load", function() {
       },
 
       pause: function () {
+          pauseStyle();
           clearInterval(interval);
       },
 
@@ -163,4 +178,12 @@ window.addEventListener("load", function() {
             timer.pause();
         }
     });
+
+    armElement.addEventListener("click", function() {
+        armElement.classList.toggle('moveArmDown');
+        armElement.classList.toggle('moveArmUp');
+        discElement.classList.toggle('discRolling');
+    });
+
+    
 });

@@ -8,3 +8,34 @@ ul {
 .currentSong {
     background: brown;
 }
+
+/**
+* SVG Styles
+*/
+
+#arm {
+    transition-duration: 1s;
+    transition-property: transform;
+
+}
+
+.moveArmDown {
+    transition-duration: 1s;
+    transform: rotate(-15deg);
+    transform-origin: bottom right;
+}
+
+.moveArmUp {
+    transition-duration: 1s;
+    transform-origin: bottom right;
+}
+
+.discRolling {
+    transform-origin: center;
+    animation: spin 2s linear infinite;
+}
+
+/**
+* Animations
+*/
+@keyframes spin { 100% { transform:rotate(360deg); } }
