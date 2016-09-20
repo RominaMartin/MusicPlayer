@@ -60,7 +60,7 @@ window.addEventListener("load", function() {
         songList[current].classList.add("currentSong");
         armElement.classList.remove('moveArmDown');
         armElement.classList.add('moveArmUp');
-        discElement.add('discRolling');
+        discElement.classList.add('discRolling');
     };
     /**
      * Cuando se pausa:
@@ -68,10 +68,10 @@ window.addEventListener("load", function() {
      * - El brazo baja
      * @returns {undefined}
      */
-    var pauseStyle = function () {
+    var setPausedStyle = function () {
         armElement.classList.add('moveArmDown');
         armElement.classList.remove('moveArmUp');
-        discElement.remove('discRolling');      
+        discElement.classList.remove('discRolling');      
     };
     
     /**
@@ -122,7 +122,6 @@ window.addEventListener("load", function() {
       },
 
       pause: function () {
-          pauseStyle();
           clearInterval(interval);
       },
 
@@ -141,7 +140,6 @@ window.addEventListener("load", function() {
     var minutesFormat = function (seconds) {
         var minutes = Math.floor(seconds / 60);
         var leftSeconds = seconds - (minutes * 60);
-        console.log("Totales: " + seconds + "\nminutes: " + minutes + "\nleftSeconds: " + leftSeconds);
 
         if(minutes < 10) {
             minutes = "0" + minutes;
@@ -151,7 +149,6 @@ window.addEventListener("load", function() {
         }
         return (minutes + ":" + leftSeconds);
     };
-    
 
     /**
      * Eventos
@@ -163,26 +160,19 @@ window.addEventListener("load", function() {
     document.getElementById("prevSong").addEventListener("click", function () {
         setCurrentSong(getPrevSongToPlay());
     });
-    
-    document.getElementById("pauseAndResume").addEventListener("click", function () {
+
+    armElement.addEventListener("click", function () {
         if(!running) {
-            console.log("!running");
             if(currentSong === 0) {
                 setCurrentSongStyle(currentSong);
             }
             running = true;
             timer.start();
         } else {
-            console.log("running");
+            setPausedStyle();
             running = false;
             timer.pause();
         }
-    });
-
-    armElement.addEventListener("click", function() {
-        armElement.classList.toggle('moveArmDown');
-        armElement.classList.toggle('moveArmUp');
-        discElement.classList.toggle('discRolling');
     });
 
     
