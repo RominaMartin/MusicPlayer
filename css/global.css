@@ -6,19 +6,62 @@ body {
 */
 
 .currentSong {
-    background: #E3001C;
-    opacity: 0.6;
+    /* #E3001C - 0.5 opacity */
+    background: rgba(227, 0, 28, 0.5);
+    border-top: none;
+    color: #FFF;
 }
+
 #info {
     margin-top: -1px;
     background: linear-gradient(to bottom, #FFF, #abbaab);
 }
+
+#albumList {
+    width: 100%;
+}
+
 .song-item {
-    border: 1px solid #FFFFFF;
+    border-top: 1px solid rgba(227, 0, 28, 0.5);
+    width: 100%;
+    height: 50px;
 }
 
 .song-name {
-    
+    float: left;
+    margin-top: 10px;
+    font-size: larger;
+    margin-left: 5%;
+}
+
+.song-artist {
+    clear: left;
+    float: left;
+    font-size: small;
+    margin-left: 5%;
+}
+
+.song-duration {
+    float: right;
+    margin-right: 5%;
+    margin-top: -4%;
+}
+
+.song-playing, .song-paused {
+    float: right;
+    margin-right: 5%;
+    margin-top: -4%;
+}
+
+.song-playing:before {
+    font-family: FontAwesome;
+    content: "\f001";
+    animation: colorAnimate 2s alternate infinite;
+}
+
+.song-paused:before {
+    font-family: FontAwesome;
+    content: "\f04c";
 }
 
 /**
@@ -114,3 +157,9 @@ body {
 * Animations
 */
 @keyframes spin { 100% { transform:rotate(360deg); } }
+
+@keyframes colorAnimate {
+    0%   { color:#e53935;}
+    50%  { color:#d50000;}
+    100% { color:#e53935;}
+}

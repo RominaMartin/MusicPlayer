@@ -12,6 +12,7 @@ Diseño de un reproductor de música que desplegará la carátula de un álbum j
     - [Animations](https://developer.mozilla.org/en-US/docs/Web/CSS/animation)
     - [Text-Shadow](https://developer.mozilla.org/es/docs/Web/CSS/text-shadow)
     - [FontAwesome](http://fontawesome.io/)
+    - [From HEX to RGBA](http://hex2rgba.devoth.com/)
 
 - JavaScript
     - [SetInterval](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)
@@ -20,6 +21,7 @@ Diseño de un reproductor de música que desplegará la carátula de un álbum j
         - [SVG to base64](https://www.base64-image.de/)
         - [SVG Optimizer](https://jakearchibald.github.io/svgomg/)
         - [Tutorial remove empty space from SVG](https://www.grobmeier.de/remove-white-space-from-svg-30102015.html)
+
 
 ## Screenshots
 

@@ -25,21 +25,30 @@ window.addEventListener("load", function() {
     var setCurrentSong = function(current) {
         removePreviousStyle();
         currentSong = current;
-        setCurrentSongStyle(currentSong);
+        setCurrentSongStyle();
         timer.startNewSong();
     };
 
     var removePreviousStyle = function () {
         var songList = document.getElementsByClassName("song-item");
         songList[currentSong].classList.remove("currentSong");
+        
+        var playing = document.getElementsByClassName("song-current");
+        playing[currentSong].classList.remove("song-playing");
+        playing[currentSong].classList.remove("song-paused");
     };
 
     var setCurrentSongStyle = function () {
         var songList = document.getElementsByClassName("song-item");
         songList[currentSong].classList.add("currentSong");
+        
+        var playing = document.getElementsByClassName("song-current");
+        playing[currentSong].classList.add("song-playing");
+
         armElement.classList.remove('moveArmDown');
         armElement.classList.add('moveArmUp');
         discElement.classList.add('discRolling');
+        
 
         document.getElementById("total-duration").textContent = (" / " + minutesFormat(album.songList[currentSong].duration));
         document.getElementById("current-song").textContent = album.songList[currentSong].name;
@@ -54,7 +63,11 @@ window.addEventListener("load", function() {
     var setPausedStyle = function () {
         armElement.classList.add('moveArmDown');
         armElement.classList.remove('moveArmUp');
-        discElement.classList.remove('discRolling');      
+        discElement.classList.remove('discRolling');
+
+        var playing = document.getElementsByClassName("song-current");
+        playing[currentSong].classList.remove("song-playing");
+        playing[currentSong].classList.add("song-paused");
     };
     
     /**
@@ -150,7 +163,11 @@ window.addEventListener("load", function() {
             
             var songList = document.getElementsByClassName("song-item");
             (function(newCurrent) { songList[newCurrent].addEventListener("click", function() {
-                    setCurrentSong(newCurrent);
+                    if(newCurrent === currentSong) {
+                        pauseOrResume();
+                    } else {
+                        setCurrentSong(newCurrent);
+                    }
                     console.log("Canción actual: " + currentSong);
                 });
             })(i);
@@ -160,6 +177,18 @@ window.addEventListener("load", function() {
 
     displaySongList();
 
+    var pauseOrResume = function () {
+        if(!running) {
+            removePreviousStyle();
+            setCurrentSongStyle(currentSong);
+            running = true;
+            timer.start();
+        } else {
+            running = false;
+            setPausedStyle();
+            timer.pause();
+        }
+    };
 
     /**
      * Eventos
@@ -173,8 +202,8 @@ window.addEventListener("load", function() {
     });
 
     armElement.addEventListener("click", function () {
-        console.log("Running: " + running + "\nCurrentSong: " + currentSong);
         if(!running) {
+            removePreviousStyle();
             setCurrentSongStyle(currentSong);
             running = true;
             timer.start();
@@ -184,6 +213,4 @@ window.addEventListener("load", function() {
             timer.pause();
         }
     });
-
-    
 });
