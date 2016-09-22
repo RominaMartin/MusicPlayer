@@ -31,11 +31,11 @@ Diseño de un reproductor de música que desplegará la carátula de un álbum j
 
 ## Screenshots
 ###Inicial
-![Inicial](images/galaxyS5.png "Inicial")
+![Inicial](https://raw.githubusercontent.com/MIMO-Romina/MusicPlayerHTML5/master/images/galaxyS5.PNG "Inicial")
 ###Reproduciendo
-![Reproduciendo](images/playing.png "Reproduciendo")
+![Reproduciendo](https://raw.githubusercontent.com/MIMO-Romina/MusicPlayerHTML5/master/images/playing.PNG "Reproduciendo")
 ###Pausado
-![Pausado](images/paused.png "Pausado")
+![Pausado](https://raw.githubusercontent.com/MIMO-Romina/MusicPlayerHTML5/master/images/paused.PNG "Pausado")
 
 ## Author
 Romina Martín - [Página personal](https://github.com/RominaMartin/RominaMartin.github.io)
