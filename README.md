@@ -23,11 +23,19 @@ Diseño de un reproductor de música que desplegará la carátula de un álbum j
         - [SVG to base64](https://www.base64-image.de/)
         - [SVG Optimizer](https://jakearchibald.github.io/svgomg/)
         - [Tutorial remove empty space from SVG](https://www.grobmeier.de/remove-white-space-from-svg-30102015.html)
-
+    - [RoyaltyFreeMusic](http://incompetech.com/music/royalty-free/music.html)
+        - [List:](http://incompetech.com/music/royalty-free/index.html?collection=18&Search=Search)
+            - "Chillin Hard"
+            - "Voice Over Under"
+            - "What Is Love"
 
 ## Screenshots
-
-<!-- TODO -->
+###Inicial
+![Inicial](images/galaxyS5.png "Inicial")
+###Reproduciendo
+![Reproduciendo](images/playing.png "Reproduciendo")
+###Pausado
+![Pausado](images/paused.png "Pausado")
 
 ## Author
 Romina Martín - [Página personal](https://github.com/RominaMartin/RominaMartin.github.io)

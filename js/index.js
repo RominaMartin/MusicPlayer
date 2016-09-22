@@ -11,7 +11,9 @@ window.addEventListener("load", function() {
     var armElement = document.getElementById('arm');
     // Elemento "disc", se usará cada vez que se pause/reanude
     var discElement = document.getElementById('disc');
-    
+    // Audio, por defecto está la primera canción
+    var audio = new Audio(album.songList[currentSong].url);
+
     // Inicialmente no habrá música así que se quita el brazo del disco
     armElement.classList.add('moveArmDown');
 
@@ -105,6 +107,10 @@ window.addEventListener("load", function() {
      */
     var timer = {
       start: function () {
+          if(!audio.paused) {
+              audio.src = album.songList[currentSong].url;
+          }
+          audio.play();
           interval = setInterval(function () {
               totalTime++;
               document.getElementById("current-duration").textContent = (minutesFormat(totalTime));
@@ -117,6 +123,7 @@ window.addEventListener("load", function() {
       },
 
       pause: function () {
+          audio.pause();
           clearInterval(interval);
       },
 
@@ -221,7 +228,6 @@ window.addEventListener("load", function() {
         window.addEventListener("resize", function() {
            height = document.getElementById('top').clientHeight + 15;
            document.getElementById("albumList").style.top = height + "px";
-           console.log("Height: " + height);
         });
     }
 
