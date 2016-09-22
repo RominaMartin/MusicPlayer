@@ -1,4 +1,3 @@
-
 window.addEventListener("load", function() {
     // Si no se selecciona ninguna, la primera estará por defecto
     var currentSong = 0;
@@ -213,4 +212,17 @@ window.addEventListener("load", function() {
             timer.pause();
         }
     });
+    
+    var mq = window.matchMedia("(min-width: 900px)");
+    if (mq.matches) {
+        var height = document.getElementById('top').clientHeight + 15;
+        document.getElementById("albumList").style.top = height + "px";
+        
+        window.addEventListener("resize", function() {
+           height = document.getElementById('top').clientHeight + 15;
+           document.getElementById("albumList").style.top = height + "px";
+           console.log("Height: " + height);
+        });
+    }
+
 });

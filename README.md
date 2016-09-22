@@ -13,9 +13,11 @@ Diseño de un reproductor de música que desplegará la carátula de un álbum j
     - [Text-Shadow](https://developer.mozilla.org/es/docs/Web/CSS/text-shadow)
     - [FontAwesome](http://fontawesome.io/)
     - [From HEX to RGBA](http://hex2rgba.devoth.com/)
+    - [Media queries](https://developer.mozilla.org/es/docs/CSS/Media_queries)
 
 - JavaScript
     - [SetInterval](https://developer.mozilla.org/en-US/docs/Web/API/WindowTimers/setInterval)
+    - [Match media queries](https://developer.mozilla.org/es/docs/Web/API/Window/matchMedia)
 - Otros
     - SVG
         - [SVG to base64](https://www.base64-image.de/)

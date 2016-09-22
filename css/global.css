@@ -14,7 +14,7 @@ body {
 
 #info {
     margin-top: -1px;
-    background: linear-gradient(to bottom, #FFF, #abbaab);
+    background: linear-gradient(to bottom, #FFF, #EFF2EF);
 }
 
 #albumList {
@@ -71,7 +71,7 @@ body {
     text-align: center;
     padding-top: 25px;
     width: 100%;
-    background: linear-gradient(to bottom, #abbaab  , #FFF);
+    background: linear-gradient(to bottom, #EFF2EF  , #FFF);
 }
 #media {
     width: 100%;
@@ -87,23 +87,23 @@ body {
 
 #prevSong {
     margin-left: 5%;
+    font-size: x-large;
 }
 
 #nextSong {
     margin-right: 5%;
+    font-size: x-large;
 }
 
 #nextSong:before {
     font-family: FontAwesome;
     color: #525253;
     content: "\F04E";
-    font-size: x-large;
 }
 #prevSong:before { 
     font-family: FontAwesome;
     color: #525253;
     content: "\F04A";
-    font-size: x-large;
 }
 #nextSong:active:before, #prevSong:active:before{
     color: #E3001C;
@@ -162,4 +162,151 @@ body {
     0%   { color:#e53935;}
     50%  { color:#d50000;}
     100% { color:#e53935;}
+}
+
+/*
+* Media queries
+*/
+@media screen and (min-width: 400px) and (max-width: 700px) {
+    
+    .song-playing, .song-paused { 
+        margin-right: 5%;
+        margin-top: -3%;
+        font-size: 1.5em;
+    }
+    .song-duration {
+        margin-top: -2%;
+    }
+}
+@media screen and (min-width: 700px) and (max-width: 900px) {
+    /**
+    * SVG Container
+    */
+    
+    #Objects { width: 550px; }
+    
+    #media { height: 25px; }
+    
+    #albumName { font-size: 3em; }
+
+    #prevSong { 
+        margin-left: 0;
+        position: absolute;
+        left: 20%;
+        font-size: 2em;
+    }
+
+    #nextSong {
+        margin-right: 0;
+        position: absolute;
+        right: 20%;
+        font-size: 2em;
+    }
+    
+    #current-song { font-size: 2em; }
+    
+    #current-artist { font-size: 1.5em; }
+
+    #current-duration {
+        font-size: 2em;
+        margin-left: 28%;
+    }
+
+    #total-duration {
+        font-size: 2em;
+        margin-left: -32%;
+    }
+    
+    .song-item { height: 75px; }    
+    
+    .song-name {
+        margin-top: 15px;
+        font-size: 1.5em;
+    }
+    .song-artist {
+        font-size: 1.2em;
+        color: #424242;
+    }
+    .song-duration {
+        margin-top: -2%;
+        font-size: 1.5em;
+    }
+    
+    .song-playing, .song-paused { 
+        font-size: 1.5em;
+        margin-top: -2%;
+    }
+}
+
+@media screen and (min-width: 900px) {
+
+    #albumList {
+        padding-left: 20%;
+        width: 80%;
+        z-index: 0;
+        position: absolute;
+        background: linear-gradient(to bottom, #FFF, #EFF2EF);
+    }
+
+    #Objects {
+        width: 15%;
+        margin-top: 50px;
+    }
+    
+    #albumName {
+        font-size: 3em;
+        position: absolute;
+        top: 25px;
+        left: 30%;
+    }
+    .song-item {
+        height: 75px;
+        width: 70%;
+    }
+    .song-artist { font-size: 1.5em; }
+    
+    .song-name { font-size: 2em; }
+    
+    .song-duration {
+        margin-top: -2%;
+        font-size: 2em;
+    }
+    
+    #prevSong {
+        font-size: 2em;
+        position: absolute;
+        left: 25%;
+    }
+    #nextSong {
+        font-size: 2em;
+        position: absolute;
+        right: 25%;
+    }
+    
+    #media { height: 50px; }
+    
+    #current-duration {
+        font-size: 2em;
+        margin-left: 30%;
+    }
+
+    #total-duration {
+        font-size: 2em;
+        margin-left: -36%;
+    }
+    #current-song { font-size: 2em; }
+    
+    #current-artist { font-size: 1.5em; }
+    
+    .song-playing, .song-paused {
+        margin-top: -2%;
+        font-size: 2em;
+    }
+    
+    #top {
+        padding-top: 25px;
+        background: linear-gradient(to bottom, #EFF2EF, #FFF);
+        position: fixed;
+        z-index: 1;
+    }
 }
