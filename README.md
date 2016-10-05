@@ -32,11 +32,11 @@ Puedes verlo [aquí](https://mimo-romina.github.io/MusicPlayerHTML5/)
 
 ## Screenshots
 ###Inicial
-![Inicial](https://raw.githubusercontent.com/MIMO-Romina/MusicPlayerHTML5/master/images/galaxyS5.PNG "Inicial")
+![Inicial](https://raw.githubusercontent.com/ROMI-WEB/MusicPlayerHTML5/master/images/galaxyS5.PNG "Inicial")
 ###Reproduciendo
-![Reproduciendo](https://raw.githubusercontent.com/MIMO-Romina/MusicPlayerHTML5/master/images/playing.PNG "Reproduciendo")
+![Reproduciendo](https://raw.githubusercontent.com/ROMI-WEB/MusicPlayerHTML5/master/images/playing.PNG "Reproduciendo")
 ###Pausado
-![Pausado](https://raw.githubusercontent.com/MIMO-Romina/MusicPlayerHTML5/master/images/paused.PNG "Pausado")
+![Pausado](https://raw.githubusercontent.com/ROMI-WEB/MusicPlayerHTML5/master/images/paused.PNG "Pausado")
 
 ## Author
 Romina Martín - [Página personal](http://rominamartin.github.io/)
