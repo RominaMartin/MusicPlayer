@@ -1,7 +1,7 @@
 # MusicPlayer - [HTML5]
 
 Diseño de un reproductor de música que desplegará la carátula de un álbum junto con el artista del mismo y la lista de canciones que lo componen.
-Puedes verlo [aquí](https://mimo-romina.github.io/MusicPlayerHTML5/)
+Puedes verlo [aquí](https://romi-web.github.io/MusicPlayerHTML5/)
 
 ## Elementos que se usan
 
