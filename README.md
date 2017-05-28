@@ -1,7 +1,7 @@
 # MusicPlayer - [HTML5]
 
 Diseño de un reproductor de música que desplegará la carátula de un álbum junto con el artista del mismo y la lista de canciones que lo componen.
-Puedes verlo [aquí](https://romi-web.github.io/MusicPlayerHTML5/)
+Puedes verlo [aquí](https://rominamartin.github.io/MusicPlayer/)
 
 ## Elementos que se usan
 
@@ -31,11 +31,11 @@ Puedes verlo [aquí](https://romi-web.github.io/MusicPlayerHTML5/)
             - "What Is Love"
 
 ## Screenshots
-###Inicial
+### Inicial
 ![Inicial](https://raw.githubusercontent.com/ROMI-WEB/MusicPlayerHTML5/master/images/galaxyS5.PNG "Inicial")
-###Reproduciendo
+### Reproduciendo
 ![Reproduciendo](https://raw.githubusercontent.com/ROMI-WEB/MusicPlayerHTML5/master/images/playing.PNG "Reproduciendo")
-###Pausado
+### Pausado
 ![Pausado](https://raw.githubusercontent.com/ROMI-WEB/MusicPlayerHTML5/master/images/paused.PNG "Pausado")
 
 ## Author
